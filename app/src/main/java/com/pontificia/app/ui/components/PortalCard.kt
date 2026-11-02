@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -17,28 +18,27 @@ import androidx.compose.ui.unit.sp
 fun PortalCard(
     title: String,
     subtitle: String,
+    description: String,
     accentColor: Color,
     onClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .clip(RoundedCornerShape(16.dp))
             .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        )
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(IntrinsicSize.Min)
+                .height(IntrinsicSize.Min),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            // Franja de acento con el color institucional exacto
             Box(
                 modifier = Modifier
-                    .width(6.dp)
+                    .width(8.dp)
                     .fillMaxHeight()
                     .background(accentColor)
             )
@@ -48,19 +48,13 @@ fun PortalCard(
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                Text(
-                    text = title,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = accentColor
-                )
+                Text(text = title, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = accentColor)
                 Spacer(modifier = Modifier.height(2.dp))
-                Text(
-                    text = subtitle,
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                Text(text = subtitle, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(text = description, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 16.sp)
             }
         }
     }
+
 }

@@ -2,29 +2,29 @@ package com.pontificia.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// ================= COLORES LOGO ILP =================
+// ================= COLORES INSTITUCIONALES =================
 val ILPBlue = Color(0xFF167CFF)
-val ILPColor = Color(0xFF167CFF)
+val ILPLightBlue = Color(0xFF42A5F5)
 
-// ================= COLORES LOGO ELP =================
-val ELPRed = Color(0xFFE55345)
-val ELPBlue = Color(0xFF00A2E8)
-val ELPYellow = Color(0xFFF1B82D)
-val ELPDarkBlue = Color(0xFF1B2A4A)
-val ELPColor = Color(0xFF00A2E8)
+// ELP: Basado en las barras del logotipo (Rojo Coral brillante y Naranja Cálido)
+val ELPCoralRed = Color(0xFFF25C4C)
+val ELPAmberOrange = Color(0xFFE67E22)
 
-// ================= COLORES CENTRO DE IDIOMAS (IDIOMAS LP) =================
-val IdiomasPurple = Color(0xFF7B1FA2)  // Morado / Púrpura oficial
-val IdiomasMagenta = Color(0xFFAB47BC) // Magenta / Violeta de acento
+// Centro de Idiomas: Púrpura Corporativo
+val IdiomasPurple = Color(0xFF7B1FA2)
+val IdiomasMagenta = Color(0xFFAB47BC)
 
-// ================= PALETTE BASE MATERIAL 3 =================
-val PrimaryBlue = Color(0xFF167CFF)
-val SecondaryBlue = Color(0xFF1B2A4A)
+// ================= MICROSOFT 365 / TEAMS (4 COLORES OFICIALES) =================
+val MicrosoftRed = Color(0xFFF25022)
+val MicrosoftGreen = Color(0xFF7FBA00)
+val MicrosoftBlue = Color(0xFF00A4EF)
+val MicrosoftYellow = Color(0xFFFFB900)
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val MicrosoftGradientColors = listOf(
+    MicrosoftRed,
+    MicrosoftYellow,
+    MicrosoftGreen,
+    MicrosoftBlue
+)
 
-val Purple40 = Color(0xFF167CFF)
-val PurpleGrey40 = Color(0xFF625B71)
-val Pink40 = Color(0xFF7D5260)
+val BackgroundLight = Color(0xFFF8FAFC)

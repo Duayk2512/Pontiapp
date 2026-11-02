@@ -9,60 +9,48 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import com.pontificia.app.ui.theme.ELPBlue
+import com.pontificia.app.ui.theme.ELPCoralRed
 import com.pontificia.app.ui.theme.ILPBlue
-import com.pontificia.app.ui.theme.IdiomasMagenta
 
 @Composable
 fun AnimatedBackground() {
-    val infiniteTransition = rememberInfiniteTransition(label = "backgroundAnimation")
+    val infiniteTransition = rememberInfiniteTransition(label = "bgAnim")
 
-    // Animación de traslación circular para la primera burbuja
     val offsetY1 by infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 100f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(6000, easing = LinearEasing),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "offsetY1"
+        initialValue = 0f, targetValue = 150f,
+        animationSpec = infiniteRepeatable(tween(5000, easing = LinearEasing), RepeatMode.Reverse),
+        label = "oy1"
     )
 
-    // Animación inversa para la segunda burbuja
     val offsetY2 by infiniteTransition.animateFloat(
-        initialValue = 100f,
-        targetValue = 0f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(8000, easing = LinearEasing),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "offsetY2"
+        initialValue = 150f, targetValue = 0f,
+        animationSpec = infiniteRepeatable(tween(7000, easing = LinearEasing), RepeatMode.Reverse),
+        label = "oy2"
     )
 
     Canvas(modifier = Modifier.fillMaxSize()) {
-        val canvasWidth = size.width
-        val canvasHeight = size.height
+        drawRect(color = Color(0xFFF4F7FB))
 
-        // Burbuja animada 1 (Azul ILP en la parte superior derecha)
+        // Orbe animado superior (Azul ILP)
         drawCircle(
             brush = Brush.radialGradient(
-                colors = listOf(ILPBlue.copy(alpha = 0.12f), Color.Transparent),
-                center = Offset(canvasWidth * 0.8f, (canvasHeight * 0.2f) + offsetY1),
-                radius = 350f
+                colors = listOf(ILPBlue.copy(alpha = 0.18f), Color.Transparent),
+                center = Offset(size.width * 0.85f, (size.height * 0.15f) + offsetY1),
+                radius = 500f
             ),
-            radius = 350f,
-            center = Offset(canvasWidth * 0.8f, (canvasHeight * 0.2f) + offsetY1)
+            radius = 500f,
+            center = Offset(size.width * 0.85f, (size.height * 0.15f) + offsetY1)
         )
 
-        // Burbuja animada 2 (Púrpura Idiomas en la parte inferior izquierda)
+        // Orbe animado inferior (Rojo Coral ELP)
         drawCircle(
             brush = Brush.radialGradient(
-                colors = listOf(IdiomasMagenta.copy(alpha = 0.10f), Color.Transparent),
-                center = Offset(canvasWidth * 0.1f, (canvasHeight * 0.7f) + offsetY2),
-                radius = 400f
+                colors = listOf(ELPCoralRed.copy(alpha = 0.15f), Color.Transparent),
+                center = Offset(size.width * 0.15f, (size.height * 0.8f) + offsetY2),
+                radius = 600f
             ),
-            radius = 400f,
-            center = Offset(canvasWidth * 0.1f, (canvasHeight * 0.7f) + offsetY2)
+            radius = 600f,
+            center = Offset(size.width * 0.15f, (size.height * 0.8f) + offsetY2)
         )
     }
 }
